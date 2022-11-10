@@ -4,16 +4,18 @@
   "description": "",
   "default": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel",
+    "build": "parcel src/index.html"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/minhajislam674/myFlix-client.git"
+  "repository": "https://github.com/minhajislam674/myFlix-client.git",
+  "author": "Minhaj Islam <minhajislam674@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/minhajislam674/myFlix-client/issues"
-  },
-  "homepage": "https://github.com/minhajislam674/myFlix-client#readme"
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
