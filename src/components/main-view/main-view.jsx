@@ -1,4 +1,8 @@
 import React from 'react';
+import axios from 'axios';
+
+import { RegistrationView } from '../registration-view/registration-view';
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 
@@ -6,40 +10,57 @@ export class MainView extends React.Component {
 
   constructor(){
     super();
+    // Initial state is set to null
     this.state = {
-      movies: [
-        {
-          _id: "635932bbfb472953a30232d5",
-          Title: "The Terminal",
-          Description: "An Eastern European tourist unexpectedly finds himself stranded in JFK airport, and must take up temporary residence there.",
-          ImagePath: 'https://th.bing.com/th/id/R.0dd965bb40f7bc3fb36450b9d7941e1f?rik=9m9r%2fj%2f9W1qBsw&pid=ImgRaw&r=0'
-      },
-      {
-          _id: "635932bbfb472953a30232d6",
-          Title: "Taxi Driver",
-          Description: "A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action.",
-          ImagePath: "https://www.imdb.com/title/tt1853728/mediaviewer/rm958180352/"
-      },
-      {
-        _id: "635932bafb472953a30232d1",
-        Title: "Interstellar",
-        Description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-        ImagePath: "https://th.bing.com/th/id/OIP.bWg6aHv4BanhJUsw4Ysd5AHaJ9?pid=ImgDet&w=1310&h=1761&rs=1"
-    }
-      ],
-      selectedMovie: null
-    }
+      movies: [],
+      selectedMovie: null,
+      user: null,
+      registeredUser: null
+    };
   }
+  componentDidMount() {
+    axios.get('https://api-thisismyflix.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
     });
   }
+  /* When a user successfully registers, this function updates the `user` property in state to that *particular user*/
+  onRegistration(registeredUser) {
+    this.setState({
+      registeredUser
+    });
+  }
+
+  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+  onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
 
   render() {
-    const {movies, selectedMovie} = this.state;
+    const {movies, selectedMovie, user, registeredUser} = this.state;
 
-    if (movies.length ===0) return <div className="main-view">The list is empty!</div>;
+    //If the user was not registered, the RegistrationView is rendered. 
+    if (!registeredUser) return <RegistrationView onRegistration={registeredUser => this.onRegistration(registeredUser)} />;
+
+    //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    // Before the movies have been loaded
+    if (movies.length ===0) return <div className="main-view"/>;
     
     return(
         <div className="main-view">
@@ -49,7 +70,7 @@ export class MainView extends React.Component {
               <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
               ))
             }
-          </div>
+        </div>
         );
       }
     }
