@@ -1,44 +1,35 @@
 import React from "react";
 import PropTypes from 'prop-types';
-
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Container, Row, Col } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image'
 export class MovieView extends React.Component {
-
-    keypressCallback(event) {
-        console.log(event.key);
-      }
-    
-    componentDidMount() {
-    document.addEventListener('keypress', this.keypressCallback);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-      }
 
     render() {
        const {movie, onBackClick} = this.props;
 
        return (
-        <div className="movie-view">
-            <div className="movie-poster">
-                <img src={movie.ImagePath} crossOrigin="cross-origin"/>
-            </div>
-            <div className="movie-title">
-                <span className="label">Title: </span>
-                <span className="value">{movie.Title} </span>
-            </div>
-            <div className="movie-description">
-                <span className="label">Description: </span>
-                <span className="value">{movie.Description}</span>
-            </div>
-            <div className="movie-director">
-                <span className="label">Director: </span>
-                <span className="value">{movie.Director.Name}</span>
-            </div>
-            <button onClick={()=> {onBackClick(null); }}>Back</button>
-        </div>
-
-       );
+        <Container>
+          <Row className="d-flex align-items-center justify-content-center">
+            <Col md>
+                <Image src={movie.ImagePath} crossOrigin="cross-origin" fluid/> 
+            </Col>
+            <Col md>
+                <Card>
+                <Card.Body>
+                    <Card.Title>{movie.Title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">Plot: </Card.Subtitle>
+                    <Card.Text>{movie.Description}</Card.Text>
+                    <Card.Subtitle className="mb-2 text-muted">Director: </Card.Subtitle>
+                    <Card.Text>{movie.Director.Name}</Card.Text>
+                    <Button onClick={()=> {onBackClick(null); }}>Back</Button>
+                </Card.Body>
+                </Card>
+            </Col>
+          </Row>
+          </Container>
+        );
     }
 }
 
