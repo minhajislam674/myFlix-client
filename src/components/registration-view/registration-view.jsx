@@ -20,6 +20,11 @@ const handleSubmit = (e) => {
     props.onRegistration(username);
 }
 
+const handleLogIn = (e) => {
+    e.preventDefault();
+    props.onLoggedIn();
+}
+
 return (
     <Container>
         <Row className="d-flex align-items-center justify-content-center">
@@ -58,8 +63,7 @@ return (
                     </Form.Group>
                     <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
                 </Form>
-                <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit">Login</Button>
-
+                <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleLogIn} >Login</Button>
             </Col>
         </Row>
     </Container>
