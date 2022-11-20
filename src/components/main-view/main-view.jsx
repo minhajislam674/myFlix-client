@@ -18,7 +18,7 @@ export class MainView extends React.Component {
       movies: [],
       selectedMovie: null,
       user: null,
-      registeredUser: true
+      registeredUser: null
     };
   }
   componentDidMount() {
