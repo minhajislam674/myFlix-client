@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -66,7 +67,8 @@ return (
         <Row className="d-flex align-items-center justify-content-center">
             <Col md={5}>
                 <Form>
-                    <h3>Log in</h3>
+                    <h1>Welcome to myFlix</h1>  
+                    <h3>Please log in</h3>
                     <Form.Group className="mb-3" controlId="formUsername">
                     <Form.Label>Username: </Form.Label>
                     <Form.Control  
@@ -90,6 +92,12 @@ return (
                     </Form.Group>
 
                     <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+
+                    <Form.Group>
+                        <br/>
+                        <Form.Label> New to myFlix? Please register </Form.Label>
+                        <Link to="/register"> here!</Link>
+                    </Form.Group>
                 </Form>
             </Col>
         </Row>
