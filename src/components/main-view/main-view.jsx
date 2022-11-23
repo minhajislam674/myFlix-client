@@ -5,15 +5,17 @@ import { BrowserRouter as Router, Route, Redirect, Routes } from 'react-router-d
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
+import { Menubar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-
+import { ProfileView } from '../profile-view/profile-view';
 
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+
 
 export class MainView extends React.Component {
 
@@ -68,6 +70,7 @@ export class MainView extends React.Component {
     const {movies, user} = this.state;
     return (
       <Router>
+        <Menubar user={user}/>
         <Row className="main-view justify-content-md-center">
 
             <Route exact path="/" render = {() => {
@@ -119,6 +122,20 @@ export class MainView extends React.Component {
               return <Col>
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={ ()=> history.goBack()} />
               </Col>
+            }} />
+
+            <Route path={`/users/${user}`} render={({history}) => {
+            if (!user) return <Redirect to="/" />
+            return <Col>
+            <ProfileView user={user} onBackClick={() => history.goBack()}/>
+            </Col>
+            }} />
+
+            <Route path={`/user-update/${user}`} render={({history}) => {
+            if (!user) return <Redirect to="/" />
+            return <Col>
+            <UpdateUser user={user} onBackClick={() => history.goBack()}/>
+            </Col>
             }} />
 
         </Row>
