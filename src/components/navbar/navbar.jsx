@@ -4,9 +4,9 @@ import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
 export function Menubar ({user}) {
 
     const onLoggedOut = () => {
-        localStorage.clear(),
-        window.open("/", "_self");
         alert("You have been succesfully logged out!")
+        localStorage.clear();
+        window.open("/", "_self");
     }
 
     const isAuth = () => {

@@ -8,40 +8,46 @@ import Image from 'react-bootstrap/Image'
 export class MovieView extends React.Component {
 
     render() {
-       const {movie, onBackClick} = this.props;
+       const {movie, onBackClick, handleFavorite} = this.props;
 
        return (
         <Container>
-          <Row className="d-flex align-items-center justify-content-center">
-            <Col md>
-                <Image src={movie.ImagePath} crossOrigin="cross-origin" fluid/> 
-            </Col>
-            <Col md>
-                <Card>
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    
-                    <Card.Subtitle className="mb-2 text-muted">Plot: </Card.Subtitle>
-                    <Card.Text>{movie.Description}</Card.Text>
+            <Row className="d-flex align-items-center justify-content-center">
+              <Col md>
+                  <Image src={movie.ImagePath} crossOrigin="cross-origin" fluid/> 
+              </Col>
+              <Col md>
+                  <Card>
+                  <Card.Body>
+                      <Card.Title>{movie.Title}</Card.Title>
+                      
+                      <Card.Subtitle className="mb-2 text-muted">Plot: </Card.Subtitle>
+                      <Card.Text>{movie.Description}</Card.Text>
 
-                    <Card.Subtitle className="mb-2 text-muted">Genre: 
-                      <Link to={`/genres/${movie.Genre.Name}`}>
-                      <a>{movie.Genre.Name}</a>
-                      </Link>
-                    </Card.Subtitle>
+                      <Card.Subtitle className="mb-2 text-muted">Genre: 
+                        <Link to={`/genres/${movie.Genre.Name}`}>
+                          <a>{movie.Genre.Name}</a>
+                        </Link>
+                      </Card.Subtitle>
 
-                    <Card.Subtitle className="mb-2 text-muted">Director:
-                      <Link to={`/directors/${movie.Director.Name}`}>
-                      <a>{movie.Director.Name}</a>
-                      </Link>
-                    </Card.Subtitle>
+                      <Card.Subtitle className="mb-2 text-muted">Director:
+                        <Link to={`/directors/${movie.Director.Name}`}>
+                          <a>{movie.Director.Name}</a>
+                        </Link>
+                      </Card.Subtitle>
 
-                    <Button onClick={()=> {onBackClick()}}>Back</Button>
+                      <Button
+                        onClick={handleFavorite}>Add to favorites
+                      </Button>
 
-                </Card.Body>
-                </Card>
-            </Col>
-          </Row>
+                      <Button 
+                        onClick={()=> {onBackClick()}}>Back
+                      </Button>
+
+                  </Card.Body>
+                  </Card>
+              </Col>
+            </Row>
           </Container>
         );
     }

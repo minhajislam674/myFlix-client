@@ -9,12 +9,13 @@ import { Menubar } from '../navbar/navbar';
 import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { ProfileView } from '../profile-view/profile-view';
-
+import { UserUpdate } from '../profile-view/update-user';
+import { UserInfo } from '../profile-view/user-info';
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import { UserInfo } from '../profile-view/user-info';
 
 
 export class MainView extends React.Component {
@@ -65,6 +66,23 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token); //this.getMovies(authData) is called and gets the movies from your API once the user is logged in. 
   }
+
+   // add to favorites
+   handleFavorite = (movieId) => {
+    let user = localStorage.getItem('user')
+    let token = localStorage.getItem('token');
+      /* Send a request to the server to add favorite (delete) */
+      axios.post(`https://watch-til-death.herokuapp.com/users/${user}/movies/${movieId}`,{
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  
 
   render() {
     const {movies, user} = this.state;
@@ -127,14 +145,7 @@ export class MainView extends React.Component {
             <Route path={`/users/${user}`} render={({history}) => {
             if (!user) return <Redirect to="/" />
             return <Col>
-            <ProfileView user={user} onBackClick={() => history.goBack()}/>
-            </Col>
-            }} />
-
-            <Route path={`/user-update/${user}`} render={({history}) => {
-            if (!user) return <Redirect to="/" />
-            return <Col>
-            <UpdateUser user={user} onBackClick={() => history.goBack()}/>
+            <UserUpdate user={user} onBackClick={() => history.goBack()}/>
             </Col>
             }} />
 
