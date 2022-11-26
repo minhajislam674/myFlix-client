@@ -38,9 +38,7 @@ export function Menubar ({user}) {
             <NavDropdown title={user} id="nav-dropdown">
                 {isAuth() && (
                     <NavDropdown.Item eventKey="4.1" href={`/users/${user}`}>Profile</NavDropdown.Item>)}
-                {isAuth() && (
-                    <NavDropdown.Item eventKey="4.3">Favorite Movies</NavDropdown.Item>)} 
-                    <NavDropdown.Divider />
+
                 {isAuth() && (
                     <NavDropdown.Item eventKey="4.4" onClick={()=> {onLoggedOut()}}>Logout</NavDropdown.Item>)}
                 

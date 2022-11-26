@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -10,12 +10,11 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { UserUpdate } from '../profile-view/update-user';
-import { UserInfo } from '../profile-view/user-info';
+import { ProfileView } from '../profile-view/profile-view';
+
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import { UserInfo } from '../profile-view/user-info';
 
 
 export class MainView extends React.Component {
@@ -25,7 +24,8 @@ export class MainView extends React.Component {
     // Initial state is set to null
     this.state = {
       movies: [],
-      user: null
+      user: null,
+      favoriteMovies: []
     };
   }
 
@@ -55,6 +55,55 @@ export class MainView extends React.Component {
     });
   }
 
+
+  handleFavorite = (movieId, operation) => {
+    const {favoriteMovies } = this.state;
+    let user = localStorage.getItem('user')
+    let token = localStorage.getItem('token');
+    if (token !== null && user !== null) {
+      // Add MovieID to Favorites (local state & webserver)
+      if (operation === "add") {
+        this.setState({ favoriteMovies: [...favoriteMovies, movieId] });
+        axios
+          .put(
+            `https://api-thisismyflix.herokuapp.com/users/${user}/movies/${movieId}`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((response) => {
+            console.log(`Movie added to ${user}`);
+            alert(`Movie added successfully`);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+  
+        // Remove MovieID from Favorites (local state & webserver)
+      } else if (operation === "remove") {
+        this.setState({
+          favoriteMovies: favoriteMovies.filter((id) => id !== movieId),
+        });
+        axios
+          .delete(
+            `https://api-thisismyflix.herokuapp.com/users/${user}/movies/${movieId}`,
+            {
+              headers: { Authorization: `Bearer ${accessToken}` },
+            }
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    }
+  };
+
+  
+
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) {
     console.log(authData);
@@ -67,21 +116,7 @@ export class MainView extends React.Component {
     this.getMovies(authData.token); //this.getMovies(authData) is called and gets the movies from your API once the user is logged in. 
   }
 
-   // add to favorites
-   handleFavorite = (movieId) => {
-    let user = localStorage.getItem('user')
-    let token = localStorage.getItem('token');
-      /* Send a request to the server to add favorite (delete) */
-      axios.post(`https://watch-til-death.herokuapp.com/users/${user}/movies/${movieId}`,{
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+
   
 
   render() {
@@ -145,7 +180,7 @@ export class MainView extends React.Component {
             <Route path={`/users/${user}`} render={({history}) => {
             if (!user) return <Redirect to="/" />
             return <Col>
-            <UserUpdate user={user} onBackClick={() => history.goBack()}/>
+            <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/>
             </Col>
             }} />
 

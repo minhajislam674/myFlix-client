@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { UserInfo } from "./user-info";
 
 
 export function UserUpdate(){
@@ -16,6 +15,8 @@ export function UserUpdate(){
   const [usernameErr, setUsernameErr] = useState('');
   const [passwordErr, setPasswordErr] = useState('');
   const [emailErr, setEmailErr] = useState('');
+
+  
 
  //Validate user inputs
   const validate =()=> {
@@ -104,8 +105,6 @@ export function UserUpdate(){
       <Container>
         <Row className="d-flex align-items-center justify-content-center">
             <Col md={5}>
-                <UserInfo/>
-                <h1> Update Information</h1>
                 <Form>
                     <Form.Group className="mb-3" >
                     <Form.Label>Username: </Form.Label>
@@ -137,7 +136,7 @@ export function UserUpdate(){
                     </Form.Group>
                     <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleUpdate}>Update</Button>
                 </Form>
-                <Button className="sign-up-button mt-2 mr-2" variant="warning" type="submit" onClick={handleDeregister}>Delete Account</Button>
+                <Button className="sign-up-button mt-2 mr-2" variant="danger" type="submit" onClick={handleDeregister}>Delete Account</Button>
 
             </Col>
         </Row>

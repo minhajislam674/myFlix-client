@@ -13,9 +13,9 @@ export class GenreView extends React.Component {
         <Container>
           <Row className="d-flex align-items-center justify-content-center">
             <Col>
-            <h1> Genre View </h1>
-            <Button onClick={()=> {onBackClick()}}>Back</Button>
-            
+            <h1> {genre.Name}</h1>
+            <p> {genre.Description}</p>
+            <Button variant="outline-primary" onClick={()=> {onBackClick()}}>Back</Button>
             </Col>
           </Row>
           </Container>

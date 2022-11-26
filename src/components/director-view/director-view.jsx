@@ -13,8 +13,10 @@ export class DirectorView extends React.Component {
         <Container>
           <Row className="d-flex align-items-center justify-content-center">
             <Col>
-            <h1> Director View </h1>
-            <Button onClick={()=> {onBackClick()}}>Back</Button>
+            <h1> {director.Name}</h1>
+            <p> {director.Bio}</p>
+            <p> Born: {director.BirthYear}</p>
+            <Button variant="outline-primary" onClick={()=> {onBackClick()}}>Back</Button>
             
             </Col>
           </Row>

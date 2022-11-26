@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -8,7 +9,25 @@ import Image from 'react-bootstrap/Image'
 export class MovieView extends React.Component {
 
     render() {
-       const {movie, onBackClick, handleFavorite} = this.props;
+      const {movie, onBackClick} = this.props;
+
+      
+      const handleAddFavorite = (movieId) => {
+        let user = localStorage.getItem('user')
+        let token = localStorage.getItem('token');
+          /* Send a request to the server to add favorite (delete) */
+          axios.post(`https://api-thisismyflix.herokuapp.com/users/${user}/movies/${movieId}`,{},{
+            headers: { Authorization: `Bearer ${token}` }
+          })
+            .then(response => {
+              console.log(response);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+
+
 
        return (
         <Container>
@@ -36,16 +55,19 @@ export class MovieView extends React.Component {
                         </Link>
                       </Card.Subtitle>
 
+
                       <Button
-                        onClick={handleFavorite}>Add to favorites
+                        onClick={() => handleAddFavorite(movie._id)}>Add to favorites
                       </Button>
-
-                      <Button 
-                        onClick={()=> {onBackClick()}}>Back
-                      </Button>
-
+   
                   </Card.Body>
                   </Card>
+
+                  <Card.Body>
+                      <Button variant="outline-primary"
+                        onClick={()=> {onBackClick()}}>Back
+                      </Button>
+                  </Card.Body>
               </Col>
             </Row>
           </Container>
