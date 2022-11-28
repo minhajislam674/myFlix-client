@@ -4,7 +4,7 @@
   "description": "",
   "default": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel src/index.html",
     "build": "parcel src/index.html"
   },
   "repository": "https://github.com/minhajislam674/myFlix-client.git",
@@ -20,7 +20,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3",
+    "react-router-dom": "5.3.0",
     "yup": "^0.32.11"
   }
 }

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -60,7 +61,7 @@ const handleSubmit = (e) => {
         .then(response => {
             const data = response.data;
             console.log(data);
-            alert('Registration successful, please log in!');
+            alert('Registration successful, now you can log in!');
             window.open('/', '_self');
         })
         .catch(err => {
@@ -76,7 +77,7 @@ return (
             <Col md={5}>
                 <Form>
                     <h1>Welcome to myFlix</h1>  
-                    <h3>Please sign up</h3>
+                    <h3>Please enter your username, password and email address to sign up!</h3>
                     <Form.Group className="mb-3" >
                     <Form.Label>Username: </Form.Label>
                     <Form.Control  
@@ -109,9 +110,15 @@ return (
                         required /> 
                         {emailErr && <p>{emailErr}</p>}
                     </Form.Group>
-                    <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>Register</Button>
+                    <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+                
+                    <Form.Group>
+                        <br/>
+                        <Form.Label> Already have an account? Log in </Form.Label>
+                        <Link to="/"> here!</Link>
+                    </Form.Group>
                 </Form>
-                <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit">Login</Button>
+
 
             </Col>
         </Row>
