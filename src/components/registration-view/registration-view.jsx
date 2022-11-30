@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -53,7 +53,7 @@ const handleSubmit = (e) => {
     e.preventDefault();
     const isReq = validate();
     if (isReq) {
-        axios.post("https://api-thisismyflix.herokuapp.com/users/", {
+        axios.post("https://myflix-movies.onrender.com/users/", {
             Username: username,
             Password: password,
             Email: email
@@ -77,7 +77,7 @@ return (
             <Col md={5}>
                 <Form>
                     <h1>Welcome to myFlix</h1>  
-                    <h3>Please enter your username, password and email address to sign up!</h3>
+                    <h6>Please register!</h6>
                     <Form.Group className="mb-3" >
                     <Form.Label>Username: </Form.Label>
                     <Form.Control  
@@ -110,7 +110,16 @@ return (
                         required /> 
                         {emailErr && <p>{emailErr}</p>}
                     </Form.Group>
-                    <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+                    <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>
+                        <Spinner
+                        as="span"
+                        variant="light"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                        animation="border"/>
+                        Submit
+                    </Button>
                 
                     <Form.Group>
                         <br/>

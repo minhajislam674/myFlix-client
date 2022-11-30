@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image'
+import './movie-view.scss'
+import CardHeader from "react-bootstrap/esm/CardHeader";
 export class MovieView extends React.Component {
 
     render() {
@@ -16,7 +17,7 @@ export class MovieView extends React.Component {
         let user = localStorage.getItem('user')
         let token = localStorage.getItem('token');
           /* Send a request to the server to add favorite (delete) */
-          axios.post(`https://api-thisismyflix.herokuapp.com/users/${user}/movies/${movieId}`,{},{
+          axios.post(`https://myflix-movies.onrender.com/users/${user}/movies/${movieId}`,{},{
             headers: { Authorization: `Bearer ${token}` }
           })
             .then(response => {
@@ -31,45 +32,45 @@ export class MovieView extends React.Component {
 
        return (
         <Container>
+          <Card className="mt-4 mx-auto">
             <Row className="d-flex align-items-center justify-content-center">
               <Col md>
-                  <Image src={movie.ImagePath} crossOrigin="cross-origin" fluid/> 
+                <CardHeader>
+                  <Card.Img src={movie.ImagePath} crossOrigin="cross-origin" /> 
+                  </CardHeader>
               </Col>
               <Col md>
-                  <Card>
-                  <Card.Body>
-                      <Card.Title>{movie.Title}</Card.Title>
-                      
-                      <Card.Subtitle className="mb-2 text-muted">Plot: </Card.Subtitle>
-                      <Card.Text>{movie.Description}</Card.Text>
+                <Card.Body>
+                    <Card.Title>{movie.Title}</Card.Title>                
+                    <Card.Subtitle className="mb-2 text-muted">Plot:</Card.Subtitle>
+                    <Card.Text>{movie.Description}</Card.Text>
 
-                      <Card.Subtitle className="mb-2 text-muted">Genre: 
-                        <Link to={`/genres/${movie.Genre.Name}`}>
-                          <a>{movie.Genre.Name}</a>
-                        </Link>
-                      </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">
+                        <span>Genre: </span>
+                      <Link to={`/genres/${movie.Genre.Name}`}>
+                        <p>{movie.Genre.Name}</p>
+                      </Link>
+                    </Card.Subtitle>
 
-                      <Card.Subtitle className="mb-2 text-muted">Director:
-                        <Link to={`/directors/${movie.Director.Name}`}>
-                          <a>{movie.Director.Name}</a>
-                        </Link>
-                      </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">
+                      <span>Director: </span>
+                      <Link to={`/directors/${movie.Director.Name}`}>
+                        <p>{movie.Director.Name}</p>
+                      </Link>
+                    </Card.Subtitle>
 
+                </Card.Body>
 
-                      <Button
-                        onClick={() => handleAddFavorite(movie._id)}>Add to favorites
-                      </Button>
-   
-                  </Card.Body>
-                  </Card>
+                    <Button 
+                        onClick={() => handleAddFavorite(movie._id)}> Add to favorites
+                    </Button>
+                    <Button variant="outline-primary ml-3"
+                      onClick={()=> {onBackClick()}}>Back
+                    </Button>
 
-                  <Card.Body>
-                      <Button variant="outline-primary"
-                        onClick={()=> {onBackClick()}}>Back
-                      </Button>
-                  </Card.Body>
               </Col>
             </Row>
+            </Card>
           </Container>
         );
     }

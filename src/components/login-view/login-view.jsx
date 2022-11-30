@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -14,6 +16,7 @@ import Col from 'react-bootstrap/Col';
 export function LoginView(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
 
     // Declare hook for each input
     const [usernameErr, setUsernameErr] = useState("");
@@ -43,10 +46,11 @@ export function LoginView(props) {
 const handleSubmit = (e) => {
     // preventing the default behavior of submitting a form
     e.preventDefault(); 
+    
     const isReq = validate();
     if (isReq) {
         // Send a request to the server for authentication
-        axios.post('https://api-thisismyflix.herokuapp.com/login/', {
+        axios.post('https://myflix-movies.onrender.com/login/', {
             Username: username,
             Password: password
         })
@@ -68,7 +72,7 @@ return (
             <Col md={5}>
                 <Form>
                     <h1>Welcome to myFlix</h1>  
-                    <h3>Please log in</h3>
+                    <h6>Please log in</h6>
                     <Form.Group className="mb-3" controlId="formUsername">
                     <Form.Label>Username: </Form.Label>
                     <Form.Control  
@@ -91,7 +95,9 @@ return (
                         {passwordErr && <p>{passwordErr}</p>}
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                     Submit
+                    </Button>
 
                     <Form.Group>
                         <br/>

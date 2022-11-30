@@ -1,10 +1,11 @@
 import React from "react";
 import { Navbar, Container, Nav, Button, NavDropdown } from "react-bootstrap";
+import './navbar.scss';
+
  
 export function Menubar ({user}) {
 
     const onLoggedOut = () => {
-        alert("You have been succesfully logged out!")
         localStorage.clear();
         window.open("/", "_self");
     }
@@ -21,7 +22,13 @@ export function Menubar ({user}) {
     };
 
     return (
-        <Navbar sticky="top" collapseOnSelect expand="md" bg="dark" variant="dark">
+        <Navbar 
+            fixed="top" 
+            expand="lg"
+            className="navbar"  
+            collapseOnSelect
+            bg="dark"
+            variant="dark">
         <Container>
             <Navbar.Brand href="/">myFlix</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -33,16 +40,11 @@ export function Menubar ({user}) {
                 <Nav.Link href="/register">Sign up</Nav.Link>)}
                 {isAuth() && (
                 <Nav.Link href="/">Movies</Nav.Link>)}
+                {isAuth() && (
+                <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>)}
+                {isAuth() && (
+                <Nav.Link onClick={()=> {onLoggedOut()}}>Logout</Nav.Link>)}
             </Nav>
-
-            <NavDropdown title={user} id="nav-dropdown">
-                {isAuth() && (
-                    <NavDropdown.Item eventKey="4.1" href={`/users/${user}`}>Profile</NavDropdown.Item>)}
-
-                {isAuth() && (
-                    <NavDropdown.Item eventKey="4.4" onClick={()=> {onLoggedOut()}}>Logout</NavDropdown.Item>)}
-                
-            </NavDropdown>
             </Navbar.Collapse>
             
         </Container>

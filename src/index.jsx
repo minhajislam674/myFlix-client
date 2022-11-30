@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import ReactDOM from "react-dom";   
-
+import './index.scss'
 import { legacy_createStore as createStore  } from "redux";
 import { Provider } from "react-redux";
 import { devToolsEnhancer } from 'redux-devtools-extension';
@@ -24,7 +24,7 @@ class MyFlixApplication extends React.Component {
     render() {
       return (
         <Provider store={myFlixStore}> 
-          <Container>
+          <Container className="my-flix">
             <MainView />
           </Container>
         </Provider>

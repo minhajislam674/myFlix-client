@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_FILTER } from "../actions/actions";
+import { SET_MOVIES, SET_FILTER, SET_USER } from "../actions/actions";
 import {combineReducers} from 'redux';
 
 function movies (state = [], action) {
@@ -17,11 +17,20 @@ function visibilityFilter (state= '', action) {
             return state;
     }
 }
+function user (state= '', action) {
+    switch(action.type) {
+        case SET_USER:
+            return action.value;
+        default:
+            return state;
+    }
+}
 
 // moviesApp is a combined reducer (a reducer made out of movies and visibilityFilter reducers). 
 const moviesApp = combineReducers({
     movies,
-    visibilityFilter
+    visibilityFilter,
+    user
 });
 
 export default moviesApp;

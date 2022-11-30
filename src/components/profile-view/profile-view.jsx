@@ -7,8 +7,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import { Figure } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { UserUpdate } from "./update-user";
+import './profile-view.scss'
 
 export class ProfileView extends React.Component {
   constructor() {
@@ -32,7 +33,7 @@ export class ProfileView extends React.Component {
     const token = localStorage.getItem("token");
     const Username = localStorage.getItem("user");
     axios
-      .get(`https://api-thisismyflix.herokuapp.com/users/${Username}`, {
+      .get(`https://myflix-movies.onrender.com/users/${Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -55,7 +56,7 @@ export class ProfileView extends React.Component {
 
     axios
       .delete(
-        `https://api-thisismyflix.herokuapp.com/users/${Username}/movies/${movie._id}`,
+        `https://myflix-movies.onrender.com/users/${Username}/movies/${movie._id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -78,8 +79,8 @@ export class ProfileView extends React.Component {
       <Container>
         <Row>
           <Col>
-            <Card className="user-profile mt-4">
-              <Card.Header>USER PROFILE</Card.Header>
+            <Card className="user-profile shadow mt-4">
+              <Card.Header><h6>User Information</h6></Card.Header>
               <Card.Body>
                 <div>
                   <p>Username: {Username}</p>
@@ -89,8 +90,8 @@ export class ProfileView extends React.Component {
             </Card>
           </Col>
           <Col>
-            <Card className="user-profile mt-4">
-              <Card.Header>EDIT PROFILE</Card.Header>
+            <Card className="user-profile shadow mt-4">
+              <Card.Header><h6>Edit Information</h6></Card.Header>
               <Card.Body>
                 <div>
                     <UserUpdate/>
@@ -100,8 +101,8 @@ export class ProfileView extends React.Component {
           </Col>
         </Row>
 
-        <Card className="favorite-movies mt-4">
-          <Card.Header>FAVORITE MOVIES</Card.Header>
+        <Card className="mt-4 shadow" >
+          <Card.Header><h6>Favorite Movies</h6></Card.Header>
           <Card.Body >
             <Row className="text-align-center">
               {FavoriteMovies.length === 0 && (
@@ -116,33 +117,33 @@ export class ProfileView extends React.Component {
                     FavoriteMovies.find((fav) => fav === movie._id)
                   ) {
                     return (
-                      <Col key={movie._id} md={4}>
-                        <Figure>
+                      
+                      <Col key={movie._id} md={3}>
+                        <Card  className="fav-movie-card">
+                          <Card.Body>
                           <Link to={`/movies/${movie._id}`}>
-                            <Figure.Image
-                              className="card-img"
+                            <Card.Img
+                              className="fav-movie-card-img"
                               src={movie.ImagePath}
                               crossOrigin="anonymous"
                               alt={movie.Title}
                             />
-                            <Figure.Caption className="text-dark">{movie.Title}</Figure.Caption>
+                            <Card.Title className="text-dark">{movie.Title}</Card.Title>
                           </Link>
-                          <Button
-                            className="mt-3"
-                            value={movie._id}
-                            variant="secondary"
-                            onClick={() => this.onRemoveFavorite(movie)}>
-                            Remove
-                          </Button>
-                        </Figure>
+                            <Button   
+                              value={movie._id}
+                              variant="secondary"
+                              onClick={() => this.onRemoveFavorite(movie)}>
+                              Remove
+                            </Button>
+                          </Card.Body>
+                        </Card>
                       </Col>
                     );
                   }
                 })}
             </Row>
-            <div>
-              <Button variant="outline-primary" onClick={()=> {onBackClick()}}>Back</Button>
-            </div>
+                <Button className="mt-3" variant="outline-primary" onClick={()=> {onBackClick()}}>Back</Button>
           </Card.Body>
         </Card>
       </Container>
