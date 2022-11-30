@@ -1,16 +1,33 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import ReactDOM from "react-dom";   
-import { MainView } from "./components/main-view/main-view";
+import './index.scss'
+import { legacy_createStore as createStore  } from "redux";
+import { Provider } from "react-redux";
+import { devToolsEnhancer } from 'redux-devtools-extension';
+import moviesApp from "./reducers/reducers";
+
+import MainView  from "./components/main-view/main-view";
 
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
-// Main component (will eventually use all the others)
+const myFlixStore = createStore(moviesApp, devToolsEnhancer({
+  hostname: "localhost",
+  port: 1234,
+  realtime: true
+}));
+
+// Main app component
 class MyFlixApplication extends React.Component {
     render() {
       return (
-        <MainView />
+        <Provider store={myFlixStore}> 
+          <Container className="my-flix">
+            <MainView />
+          </Container>
+        </Provider>
       );
     }
   }
