@@ -2,6 +2,7 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "",
+  "main": "src/index.html",
   "default": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html",
@@ -12,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@parcel/transformer-sass": "2.0.0-rc.0",
-    "parcel": "^2.0.0-rc.0"
+    "parcel": "^2.8.0"
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
@@ -27,6 +28,7 @@
     "react-toastify": "^9.1.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "parcel": "^2.8.0"
   }
 }
