@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Card } from "react-bootstrap";
-import { UserUpdate } from "./update-user";
+import { UserUpdate } from "../update-user/update-user";
 import './profile-view.scss'
 
 export class ProfileView extends React.Component {
