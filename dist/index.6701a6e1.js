@@ -47029,7 +47029,7 @@ var _colDefault = parcelHelpers.interopDefault(_col);
 var _card = require("react-bootstrap/Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
 var _reactBootstrap = require("react-bootstrap");
-var _updateUser = require("./update-user");
+var _updateUser = require("../update-user/update-user");
 var _profileViewScss = require("./profile-view.scss");
 class ProfileView extends _reactDefault.default.Component {
     constructor(){
@@ -47381,11 +47381,11 @@ ProfileView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","react/jsx-runtime":"8xIwr","prop-types":"1tgq3","react-router-dom":"cpyQW","react-bootstrap/Button":"9CzHT","react-bootstrap/Container":"2PRIq","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Card":"MoOk8","react-bootstrap":"h2YVd","./update-user":"hBcEf","./profile-view.scss":"gb0ga"}],"hBcEf":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f560 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","react/jsx-runtime":"8xIwr","prop-types":"1tgq3","react-router-dom":"cpyQW","react-bootstrap/Button":"9CzHT","react-bootstrap/Container":"2PRIq","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Card":"MoOk8","react-bootstrap":"h2YVd","./profile-view.scss":"gb0ga","../update-user/update-user":"kY3NM"}],"gb0ga":[function() {},{}],"kY3NM":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e9b1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f560.prelude(module);
+$parcel$ReactRefreshHelpers$e9b1.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -47495,28 +47495,28 @@ function UserUpdate() {
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_containerDefault.default, {
         __source: {
-            fileName: "src/components/profile-view/update-user.jsx",
+            fileName: "src/components/update-user/update-user.jsx",
             lineNumber: 105
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
             className: "d-flex align-items-center justify-content-center",
             __source: {
-                fileName: "src/components/profile-view/update-user.jsx",
+                fileName: "src/components/update-user/update-user.jsx",
                 lineNumber: 106
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_colDefault.default, {
                 md: 5,
                 __source: {
-                    fileName: "src/components/profile-view/update-user.jsx",
+                    fileName: "src/components/update-user/update-user.jsx",
                     lineNumber: 107
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
                         __source: {
-                            fileName: "src/components/profile-view/update-user.jsx",
+                            fileName: "src/components/update-user/update-user.jsx",
                             lineNumber: 108
                         },
                         __self: this,
@@ -47524,14 +47524,14 @@ function UserUpdate() {
                             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
                                 className: "mb-3",
                                 __source: {
-                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    fileName: "src/components/update-user/update-user.jsx",
                                     lineNumber: 109
                                 },
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 110
                                         },
                                         __self: this,
@@ -47543,14 +47543,14 @@ function UserUpdate() {
                                         onChange: (e)=>setUsername(e.target.value)
                                         ,
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 111
                                         },
                                         __self: this
                                     }),
                                     usernameErr && /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 115
                                         },
                                         __self: this,
@@ -47561,14 +47561,14 @@ function UserUpdate() {
                             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
                                 className: "mb-3",
                                 __source: {
-                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    fileName: "src/components/update-user/update-user.jsx",
                                     lineNumber: 118
                                 },
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 119
                                         },
                                         __self: this,
@@ -47581,14 +47581,14 @@ function UserUpdate() {
                                         ,
                                         required: true,
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 120
                                         },
                                         __self: this
                                     }),
                                     passwordErr && /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 125
                                         },
                                         __self: this,
@@ -47599,14 +47599,14 @@ function UserUpdate() {
                             /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
                                 className: "mb-3",
                                 __source: {
-                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    fileName: "src/components/update-user/update-user.jsx",
                                     lineNumber: 128
                                 },
                                 __self: this,
                                 children: [
                                     /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 129
                                         },
                                         __self: this,
@@ -47619,14 +47619,14 @@ function UserUpdate() {
                                         ,
                                         required: true,
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 130
                                         },
                                         __self: this
                                     }),
                                     emailErr && /*#__PURE__*/ _jsxRuntime.jsx("p", {
                                         __source: {
-                                            fileName: "src/components/profile-view/update-user.jsx",
+                                            fileName: "src/components/update-user/update-user.jsx",
                                             lineNumber: 135
                                         },
                                         __self: this,
@@ -47640,7 +47640,7 @@ function UserUpdate() {
                                 type: "submit",
                                 onClick: handleUpdate,
                                 __source: {
-                                    fileName: "src/components/profile-view/update-user.jsx",
+                                    fileName: "src/components/update-user/update-user.jsx",
                                     lineNumber: 137
                                 },
                                 __self: this,
@@ -47654,7 +47654,7 @@ function UserUpdate() {
                         type: "submit",
                         onClick: handleDeregister,
                         __source: {
-                            fileName: "src/components/profile-view/update-user.jsx",
+                            fileName: "src/components/update-user/update-user.jsx",
                             lineNumber: 139
                         },
                         __self: this,
@@ -47670,12 +47670,12 @@ _c = UserUpdate;
 var _c;
 $RefreshReg$(_c, "UserUpdate");
 
-  $parcel$ReactRefreshHelpers$f560.postlude(module);
+  $parcel$ReactRefreshHelpers$e9b1.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-bootstrap/Button":"9CzHT","react-bootstrap/Form":"5ykgY","react-bootstrap/Container":"2PRIq","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"gb0ga":[function() {},{}],"2L0if":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-bootstrap/Button":"9CzHT","react-bootstrap/Form":"5ykgY","react-bootstrap/Container":"2PRIq","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"2L0if":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "batch", ()=>_reactBatchedUpdates.unstable_batchedUpdates
