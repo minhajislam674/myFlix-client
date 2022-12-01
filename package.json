@@ -11,12 +11,13 @@
   "author": "Minhaj Islam <minhajislam674@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.8.0",
     "parcel": "^2.8.0"
   },
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "axios": "^1.1.3",
+    "parcel": "^2.8.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
@@ -27,7 +28,6 @@
     "react-toastify": "^9.1.1",
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
-    "yup": "^0.32.11",
-    "parcel": "^2.8.0"
+    "yup": "^0.32.11"
   }
 }
