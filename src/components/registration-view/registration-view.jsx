@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -111,13 +110,6 @@ return (
                         {emailErr && <p>{emailErr}</p>}
                     </Form.Group>
                     <Button className="sign-up-button mt-2 mr-2" variant="primary" type="submit" onClick={handleSubmit}>
-                        <Spinner
-                        as="span"
-                        variant="light"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                        animation="border"/>
                         Submit
                     </Button>
                 
