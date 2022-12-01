@@ -4,8 +4,8 @@
   "description": "",
   "default": "src/index.html",
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel src/index.html"
+    "start": "src/index.html",
+    "build": "src/index.html"
   },
   "repository": "https://github.com/minhajislam674/myFlix-client.git",
   "author": "Minhaj Islam <minhajislam674@gmail.com>",
