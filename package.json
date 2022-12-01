@@ -11,11 +11,9 @@
   "author": "Minhaj Islam <minhajislam674@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.0",
-    "parcel": "^2.8.0"
+    "@parcel/transformer-sass": "2.0.0-rc.0"
   },
   "dependencies": {
-    "@parcel/transformer-sass": "^2.8.0",
     "@redux-devtools/extension": "^3.2.3",
     "axios": "^1.1.3",
     "parcel": "^2.0.0-rc.0",
