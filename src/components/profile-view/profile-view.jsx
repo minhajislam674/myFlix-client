@@ -156,7 +156,6 @@ ProfileView.propTypes = {
     Username: PropTypes.string,
     Password: PropTypes.string,
     Email: PropTypes.string,
-    Birthday: PropTypes.string,
     FavoriteMovies: PropTypes.array,
   }),
 };

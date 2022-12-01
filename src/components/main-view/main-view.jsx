@@ -33,7 +33,16 @@ class MainView extends React.Component {
       this.getUser(accessToken);
      }
   }
-
+    /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+    onLoggedIn(authData) {
+      console.log(authData);
+      this.props.setUser(authData.user);
+  
+      //The auth information received from the handleSubmit method—the token and the user—is saved in localStorage.
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token); //this.getMovies(authData) is called and gets the movies from your API once the user is logged in. 
+    }
 
   getMovies (token) {
     axios.get('https://myflix-movies.onrender.com/movies/', {
@@ -109,23 +118,9 @@ class MainView extends React.Component {
 
   
 
-  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.props.setUser(authData.user);
-
-    //The auth information received from the handleSubmit method—the token and the user—is saved in localStorage.
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token); //this.getMovies(authData) is called and gets the movies from your API once the user is logged in. 
-  }
-
-
-  
-
   render() {
     let { movies, user } = this.props;
-    const username = user.Username;
+    const username = localStorage.getItem("user");
     return (
       <Router>
         <Menubar user={username}/>
@@ -153,7 +148,7 @@ class MainView extends React.Component {
               if (!username) return <Col>
               <LoginView onLoggedIn={username => this.onLoggedIn(username)} />
               </Col>
-              if (movies.length === 0) return <div className="main-view" />;
+              if (movies.length === 0) return <div className="main-view" />
               return <Col>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
             </Col>
@@ -163,7 +158,7 @@ class MainView extends React.Component {
               if (!username) return <Col>
               <LoginView onLoggedIn={username => this.onLoggedIn(username)} />
               </Col>
-              if (movies.length === 0) return <div className="main-view" />;
+              if (movies.length === 0) return <div className="main-view" />
               return <Col>
                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={ ()=> history.goBack()} />
               </Col>
@@ -173,7 +168,7 @@ class MainView extends React.Component {
               if (!username) return <Col>
               <LoginView onLoggedIn={username => this.onLoggedIn(username)} />
               </Col>
-              if (movies.length === 0) return <div className="main-view" />;
+              if (movies.length === 0) return <div className="main-view" />
               return <Col>
                 <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={ ()=> history.goBack()} />
               </Col>
