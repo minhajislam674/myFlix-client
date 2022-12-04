@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 
-export function DirectorView({ director, movie, movies, onBackClick })   {
+export function DirectorView({ director, movies, onBackClick })   {
 
        return (
         <Container>
@@ -17,14 +17,20 @@ export function DirectorView({ director, movie, movies, onBackClick })   {
               <Button className="mb-5" variant="outline-primary" onClick={()=> {onBackClick()}}>Back</Button>
             </Col>
           </Row>
+
           <Row>
             <Col md={12}>
-              <h4 >Other movies by {director.Name}</h4>
+                <h4 >Other movies by {director.Name}</h4>
             </Col>
           </Row>
-          <Row>
 
-        </Row>
+          <Row className="justify-content-md-center">
+            {movies.map((m) => (
+              <Col xs={12} md={6} lg={4} key={m._id}>
+                <MovieCard movie={m} />
+              </Col>
+            ))}
+          </Row>
 
           </Container>
         );

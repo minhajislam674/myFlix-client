@@ -25641,6 +25641,8 @@ class MainView extends _reactDefault.default.Component {
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
                                         director: movies.find((m)=>m.Director.Name === match.params.name
                                         ).Director,
+                                        movies: movies.filter((m)=>m.Director.Name === match.params.name
+                                        ),
                                         onBackClick: ()=>history.goBack()
                                     })
                                 }));
@@ -25666,13 +25668,15 @@ class MainView extends _reactDefault.default.Component {
                                     children: /*#__PURE__*/ _jsxRuntime.jsx(_genreView.GenreView, {
                                         genre: movies.find((m)=>m.Genre.Name === match.params.name
                                         ).Genre,
+                                        movies: movies.filter((m)=>m.Genre.Name === match.params.name
+                                        ),
                                         onBackClick: ()=>history.goBack()
                                     })
                                 }));
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 167
+                                lineNumber: 170
                             },
                             __self: this
                         }),
@@ -25692,7 +25696,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 177
+                                lineNumber: 183
                             },
                             __self: this
                         })
@@ -46627,7 +46631,7 @@ var _card = require("react-bootstrap/Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
 var _reactBootstrap = require("react-bootstrap");
 var _movieCard = require("../movie-card/movie-card");
-function DirectorView({ director , movie , movies , onBackClick  }) {
+function DirectorView({ director , movies , onBackClick  }) {
     return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/director-view/director-view.jsx",
@@ -46701,20 +46705,20 @@ function DirectorView({ director , movie , movies , onBackClick  }) {
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
                 __source: {
                     fileName: "src/components/director-view/director-view.jsx",
-                    lineNumber: 20
+                    lineNumber: 21
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
                     md: 12,
                     __source: {
                         fileName: "src/components/director-view/director-view.jsx",
-                        lineNumber: 21
+                        lineNumber: 22
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
                         __source: {
                             fileName: "src/components/director-view/director-view.jsx",
-                            lineNumber: 22
+                            lineNumber: 23
                         },
                         __self: this,
                         children: [
@@ -46725,11 +46729,31 @@ function DirectorView({ director , movie , movies , onBackClick  }) {
                 })
             }),
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                className: "justify-content-md-center",
                 __source: {
                     fileName: "src/components/director-view/director-view.jsx",
-                    lineNumber: 25
+                    lineNumber: 27
                 },
-                __self: this
+                __self: this,
+                children: movies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        xs: 12,
+                        md: 6,
+                        lg: 4,
+                        __source: {
+                            fileName: "src/components/director-view/director-view.jsx",
+                            lineNumber: 29
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                            movie: m,
+                            __source: {
+                                fileName: "src/components/director-view/director-view.jsx",
+                                lineNumber: 30
+                            },
+                            __self: this
+                        })
+                    }, m._id)
+                )
             })
         ]
     }));
@@ -46888,115 +46912,134 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _reactBootstrap = require("react-bootstrap");
-class GenreView extends _reactDefault.default.Component {
-    render() {
-        const { genre , onBackClick  } = this.props;
-        return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
-            __source: {
-                fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 11
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
-                    className: "d-flex align-items-center justify-content-center",
+var _movieCard = require("../movie-card/movie-card");
+function GenreView({ genre , movies , onBackClick  }) {
+    return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
+        __source: {
+            fileName: "src/components/genre-view/genre-view.jsx",
+            lineNumber: 9
+        },
+        __self: this,
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                className: "d-flex align-items-center justify-content-center",
+                __source: {
+                    fileName: "src/components/genre-view/genre-view.jsx",
+                    lineNumber: 10
+                },
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 12
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Col, {
-                        __source: {
-                            fileName: "src/components/genre-view/genre-view.jsx",
-                            lineNumber: 13
-                        },
-                        __self: this,
-                        children: [
-                            /*#__PURE__*/ _jsxRuntime.jsxs("h1", {
-                                __source: {
-                                    fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 14
-                                },
-                                __self: this,
-                                children: [
-                                    " ",
-                                    genre.Name
-                                ]
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsxs("p", {
-                                __source: {
-                                    fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 15
-                                },
-                                __self: this,
-                                children: [
-                                    " ",
-                                    genre.Description
-                                ]
-                            }),
-                            /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                                variant: "outline-primary",
-                                onClick: ()=>{
-                                    onBackClick();
-                                },
-                                __source: {
-                                    fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 16
-                                },
-                                __self: this,
-                                children: "Back"
-                            })
-                        ]
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Row, {
-                    className: "mt-3",
-                    __source: {
-                        fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 20
+                        lineNumber: 11
                     },
                     __self: this,
                     children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
-                            md: 12,
+                        /*#__PURE__*/ _jsxRuntime.jsxs("h1", {
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 21
+                                lineNumber: 12
                             },
                             __self: this,
-                            children: /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
-                                __source: {
-                                    fileName: "src/components/genre-view/genre-view.jsx",
-                                    lineNumber: 22
-                                },
-                                __self: this,
-                                children: [
-                                    "Other ",
-                                    genre.Name,
-                                    " movies"
-                                ]
-                            })
+                            children: [
+                                " ",
+                                genre.Name
+                            ]
                         }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        /*#__PURE__*/ _jsxRuntime.jsxs("p", {
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 24
+                                lineNumber: 13
                             },
-                            __self: this
+                            __self: this,
+                            children: [
+                                " ",
+                                genre.Description
+                            ]
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                            className: "mb-5",
+                            variant: "outline-primary",
+                            onClick: ()=>{
+                                onBackClick();
+                            },
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 14
+                            },
+                            __self: this,
+                            children: "Back"
                         })
                     ]
                 })
-            ]
-        }));
-    }
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                __source: {
+                    fileName: "src/components/genre-view/genre-view.jsx",
+                    lineNumber: 18
+                },
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                    md: 12,
+                    __source: {
+                        fileName: "src/components/genre-view/genre-view.jsx",
+                        lineNumber: 19
+                    },
+                    __self: this,
+                    children: /*#__PURE__*/ _jsxRuntime.jsxs("h4", {
+                        __source: {
+                            fileName: "src/components/genre-view/genre-view.jsx",
+                            lineNumber: 20
+                        },
+                        __self: this,
+                        children: [
+                            "Other ",
+                            genre.Name,
+                            " movies"
+                        ]
+                    })
+                })
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
+                className: "justify-content-md-center",
+                __source: {
+                    fileName: "src/components/genre-view/genre-view.jsx",
+                    lineNumber: 24
+                },
+                __self: this,
+                children: movies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        xs: 12,
+                        md: 6,
+                        lg: 4,
+                        __source: {
+                            fileName: "src/components/genre-view/genre-view.jsx",
+                            lineNumber: 26
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                            movie: m,
+                            __source: {
+                                fileName: "src/components/genre-view/genre-view.jsx",
+                                lineNumber: 27
+                            },
+                            __self: this
+                        })
+                    }, m._id)
+                )
+            })
+        ]
+    }));
 }
+_c = GenreView;
+var _c;
+$RefreshReg$(_c, "GenreView");
 
   $parcel$ReactRefreshHelpers$5f0a.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Button":"9CzHT","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"2E7Aw":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Button":"9CzHT","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","../movie-card/movie-card":"6EiBJ"}],"2E7Aw":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$58c6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
