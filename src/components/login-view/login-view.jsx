@@ -42,7 +42,8 @@ export function LoginView(props) {
     return isReq;
 }
 
-const notify = () => toast("Logged in sucessfully!");
+
+
 
 const handleSubmit = (e) => {
     // preventing the default behavior of submitting a form
@@ -58,9 +59,20 @@ const handleSubmit = (e) => {
         // then call props.onLoggedIn(username)
         .then(response => {
             const data = response.data;
+            toast("Logged in sucessfully!");
             props.onLoggedIn(data);
         })
         .catch(e => {
+            toast.error('User not found!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
             console.log("No such user")
         });
     }
@@ -72,7 +84,7 @@ return (
         <Row className="d-flex align-items-center justify-content-center">
             <Col md={5}>
                 <Form>
-                    <h1>Welcome to myFlix</h1>  
+                    <h1>Welcome to myFlix 2</h1>  
                     <h6>Please log in</h6>
                     <Form.Group className="mb-3" controlId="formUsername">
                     <Form.Label>Username: </Form.Label>
@@ -96,7 +108,9 @@ return (
                         {passwordErr && <p>{passwordErr}</p>}
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" onClick={handleSubmit} >
+                    <Label onClick={handleSubmit}> Click me! </Label>
+
+                    <Button variant="primary" onClick={handleSubmit} >
                      Submit
                      <ToastContainer/>
                     </Button>
