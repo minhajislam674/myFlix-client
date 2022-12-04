@@ -2,7 +2,6 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "",
-  "default": "src/index.html",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel src/index.html"

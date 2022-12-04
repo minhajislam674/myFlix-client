@@ -12,7 +12,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
