@@ -46598,9 +46598,6 @@ function RegistrationView(props) {
 }
 _s(RegistrationView, "QZC0J7xbP3r8LgIg+1Di7XFxrfQ=");
 _c = RegistrationView;
-RegistrationView.propTypes = {
-    onRegistration: _propTypesDefault.default.func.isRequired
-};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
@@ -47406,14 +47403,6 @@ class ProfileView extends _reactDefault.default.Component {
         }));
     }
 }
-ProfileView.propTypes = {
-    User: _propTypesDefault.default.shape({
-        Username: _propTypesDefault.default.string,
-        Password: _propTypesDefault.default.string,
-        Email: _propTypesDefault.default.string,
-        FavoriteMovies: _propTypesDefault.default.array
-    })
-};
 
   $parcel$ReactRefreshHelpers$58c6.postlude(module);
 } finally {

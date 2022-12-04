@@ -151,11 +151,3 @@ export class ProfileView extends React.Component {
   }
 }
 
-ProfileView.propTypes = {
-  User: PropTypes.shape({
-    Username: PropTypes.string,
-    Password: PropTypes.string,
-    Email: PropTypes.string,
-    FavoriteMovies: PropTypes.array,
-  }),
-};

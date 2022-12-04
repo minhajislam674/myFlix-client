@@ -127,7 +127,3 @@ return (
 );
 
 }
-
-RegistrationView.propTypes = {
-    onRegistration: PropTypes.func.isRequired
-}
