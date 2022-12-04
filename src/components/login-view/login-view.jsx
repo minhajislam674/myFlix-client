@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import PropTypes from 'prop-types';
 import axios from "axios";
 import { Link } from "react-router-dom";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,12 +17,10 @@ import Col from 'react-bootstrap/Col';
 export function LoginView(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
 
     // Declare hook for each input
     const [usernameErr, setUsernameErr] = useState("");
     const [passwordErr, setPasswordErr] = useState("");
-
     //Validate user inputs
     const validate =()=> {
     //Declaring the variable isReq and setting it to true.
@@ -42,6 +41,8 @@ export function LoginView(props) {
     }
     return isReq;
 }
+
+const notify = () => toast("Logged in sucessfully!");
 
 const handleSubmit = (e) => {
     // preventing the default behavior of submitting a form
@@ -95,10 +96,11 @@ return (
                         {passwordErr && <p>{passwordErr}</p>}
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>
+                    <Button variant="primary" type="submit" onClick={handleSubmit} >
                      Submit
+                     <ToastContainer/>
                     </Button>
-
+                    
                     <Form.Group>
                         <br/>
                         <Form.Label> New to myFlix? Please register </Form.Label>
