@@ -119,8 +119,6 @@ return (
                         <Link to="/"> here!</Link>
                     </Form.Group>
                 </Form>
-
-
             </Col>
         </Row>
     </Container>
